@@ -7,15 +7,14 @@
 
     <ImageView
         android:id="@+id/product_imageView"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="24dp"
         android:viewportWidth="120"
         android:viewportHeight="80"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="5dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -23,10 +22,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="70dp"
         android:text="BURGER JOINT"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/like_imageView"
         app:layout_constraintStart_toEndOf="@+id/product_imageView"
         app:layout_constraintTop_toTopOf="@+id/product_imageView" />
 
@@ -39,7 +37,8 @@
         android:text="3,5% Cashbacks Paying with lucky"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/product_brand_textView"
+        android:textColor="@color/blue_cian"
+        app:layout_constraintEnd_toEndOf="@+id/product_brand_textView"
         app:layout_constraintStart_toStartOf="@+id/product_brand_textView"
         app:layout_constraintTop_toBottomOf="@+id/product_brand_textView" />
 
@@ -58,19 +57,19 @@
         android:id="@+id/likes_counter_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:text="1,5K"
         android:textSize="10dp"
-        app:layout_constraintStart_toEndOf="@+id/like_imageView"
+        app:layout_constraintStart_toEndOf="@id/like_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/product_brand_textView" />
 
     <ImageView
         android:id="@+id/like_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="3dp"
-        app:layout_constraintStart_toEndOf="@+id/product_brand_textView"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/likes_counter_textView"
         app:srcCompat="@drawable/like_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

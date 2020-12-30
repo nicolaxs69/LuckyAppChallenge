@@ -9,7 +9,6 @@
         android:id="@+id/section_title_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:fontFamily="@font/sf_pro"
         android:textColor="@color/blue_cian"
         android:textSize="24sp"
@@ -18,12 +17,12 @@
         tools:text="Top Cashbacks" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offers_recyclerView"
+        android:id="@+id/items_recyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="23dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/section_title_textView"

@@ -13,6 +13,8 @@ import com.lucky.luckyappchallenge.actions.OfferActions
 import com.lucky.luckyappchallenge.databinding.FragmentHomeBinding
 import com.lucky.luckyappchallenge.models.Offer
 import com.lucky.luckyappchallenge.models.Section
+import com.lucky.luckyappchallenge.utils.hide
+import com.lucky.luckyappchallenge.utils.show
 import com.lucky.luckyappchallenge.viewmodels.HomeViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -53,7 +55,7 @@ class HomeFragment : Fragment() {
         homeViewModel.apply {
             offerAction.observe(viewLifecycleOwner, Observer {
                 when (it) {
-                    is OfferActions.ShowLoader -> TODO()
+                    is OfferActions.ShowLoader -> showShimmer(it.show)
                     is OfferActions.DrawOffers -> updateView(it.offer)
                 }
             })
@@ -63,7 +65,9 @@ class HomeFragment : Fragment() {
     private fun updateView(offer: Offer) {
         binding.apply {
             sectionAdapter.clear()
-            offer.sections.map { offerItemsSize = it.items.size }
+            offer.sections.forEach { section ->
+                offerItemsSize += section.items.size
+            }
             offersCounterTextView.text =
                 binding.root.resources.getString(R.string.luckyApp_offers_counter, offerItemsSize)
             homeViewModel.getOfferSection(offer.sections)?.let {
@@ -73,9 +77,27 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupGroupie() {
-        binding.offersRecyclerView.apply {
+        binding.sectionsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = sectionAdapter
+        }
+    }
+
+    private fun showShimmer(show: Boolean) {
+        binding.apply {
+            sectionRecyclerShimmer.apply {
+                if (show) {
+                    sectionsRecyclerView.hide()
+                    offersCounterTextView.hide()
+                    visibility = View.VISIBLE
+                    startShimmer()
+                } else {
+                    stopShimmer()
+                    visibility = View.GONE
+                    offersCounterTextView.show()
+                    sectionsRecyclerView.show()
+                }
+            }
         }
     }
 

@@ -25,10 +25,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         disposable.add(
             OffersServiceBuilder.buildAvailableOrdersService().getOffers()
                 .applySchedulers()
-                // .doOnSubscribe { showLoader(true) }
-                // .doFinally { showLoader(false) }
+                .doOnSubscribe { showLoader(true) }
+                .doFinally { showLoader(false) }
                 .subscribe({ handleOffers(it) }, this::handleError)
-
         )
     }
 

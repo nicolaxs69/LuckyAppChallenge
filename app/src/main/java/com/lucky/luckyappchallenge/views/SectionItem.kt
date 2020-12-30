@@ -45,7 +45,7 @@ class SectionItem(
     }
 
     private fun setupGroupie() {
-        binding.offersRecyclerView.apply {
+        binding.itemsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = itemsAdapter
         }
