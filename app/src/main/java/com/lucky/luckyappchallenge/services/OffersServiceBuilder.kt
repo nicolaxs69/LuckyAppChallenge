@@ -19,7 +19,11 @@ object OffersServiceBuilder {
         .build()
         .create(OffersApiService::class.java)
 
-    fun buildAvailableOrdersService(): OffersApiService {
+    fun buildOffersAvailableService(): OffersApiService {
+        return retrofit
+    }
+
+    fun buildOffersDetailService(): OffersApiService {
         return retrofit
     }
 }

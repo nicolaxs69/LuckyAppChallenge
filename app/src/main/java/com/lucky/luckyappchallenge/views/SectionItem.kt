@@ -1,18 +1,19 @@
 package com.lucky.luckyappchallenge.views
 
 import com.lucky.luckyappchallenge.databinding.OfferSectionBinding
-import com.lucky.luckyappchallenge.models.Section
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucky.luckyappchallenge.R
 import com.lucky.luckyappchallenge.models.Item
+import com.lucky.luckyappchallenge.models.Section
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.viewbinding.BindableItem
 
 class SectionItem(
-    private val data: Section
-) : BindableItem<OfferSectionBinding>() {
+    private val data: Section,
+    private val sectionListener: SectionListener
+) : BindableItem<OfferSectionBinding>(), OfferItem.OfferItemListener {
 
     private lateinit var binding: OfferSectionBinding
 
@@ -53,7 +54,15 @@ class SectionItem(
 
     private fun getOfferItems(data: List<Item>): List<OfferItem>? {
         return data.map { offer ->
-            OfferItem(offer)
+            OfferItem(offer, this)
         }
+    }
+
+    interface SectionListener {
+        fun onClickOfferItem(data: Item)
+    }
+
+    override fun onClickOffer(data: Item) {
+        sectionListener.onClickOfferItem(data)
     }
 }
