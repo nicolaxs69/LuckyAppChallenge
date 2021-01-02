@@ -7,6 +7,49 @@
     android:layout_height="wrap_content"
     tools:context=".fragments.HomeFragment">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/myToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/gray_scale_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/actionbar_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sf_pro"
+                android:gravity="center"
+                android:text="@string/title_home_fragment"
+                android:textColor="@color/blue_cian"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_like" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/offers_counter_textView"
         android:layout_width="wrap_content"
@@ -14,18 +57,18 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="14dp"
         android:gravity="center_horizontal|top"
-        android:text="124 offers"
+        tools:text="124 offers"
         android:textColor="@color/gray_scale"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_container" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sections_recyclerView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,15 +80,16 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/section_recycler_shimmer"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:foregroundGravity="center"
+        android:layout_marginTop="25dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/offers_counter_textView"
+        app:layout_constraintTop_toBottomOf="@+id/offers_counter_textView"
         app:shimmer_duration="800">
 
         <LinearLayout

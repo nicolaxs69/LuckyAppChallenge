@@ -7,16 +7,81 @@
     android:layout_height="match_parent"
     tools:context=".fragments.OfferDetailFragment">
 
-
-    <ScrollView
-        android:id="@+id/scroll_container"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="85dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/offerDetail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/gray_scale_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Hola!"
+                app:titleTextColor="@color/gray_scale_200" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/back_arrow_container"
+                android:layout_width="70dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/offerDetail_toolbar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/back_toolbar_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:src="@drawable/icon_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <ImageView
+                android:id="@+id/like_toolbar_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="11dp"
+                android:src="@drawable/icon_like"
+                app:layout_constraintBottom_toBottomOf="@+id/offerDetail_toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/offerDetail_toolbar" />
+
+            <ImageView
+                android:id="@+id/share_toolbar_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/icon_shared"
+                app:layout_constraintBottom_toBottomOf="@+id/offerDetail_toolbar"
+                app:layout_constraintEnd_toStartOf="@+id/like_toolbar_imageView"
+                app:layout_constraintTop_toTopOf="@+id/offerDetail_toolbar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/scroll_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_container">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="251dp"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="-16dp"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
@@ -35,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
+                android:textAllCaps="true"
                 android:textColor="@color/gray_scale"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_detail_imageView"
@@ -109,9 +176,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
-                android:text="PRICE"
+                android:text="@string/price_detail_fragment"
                 android:textColor="@color/blue_cian"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/product_detail_description_textView"
                 app:layout_constraintTop_toBottomOf="@+id/product_detail_description_textView" />
 
@@ -120,22 +187,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
-                android:text="REDEMPTIONS CAP: 4 TIMES"
+                android:layout_marginBottom="30dp"
+                android:textAllCaps="true"
                 android:textColor="@color/blue_cian"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/price_discount_textView"
-                app:layout_constraintTop_toBottomOf="@+id/price_textView" />
+                app:layout_constraintTop_toBottomOf="@+id/price_textView"
+                tools:text="REDEMPTIONS CAP: 4 TIMES" />
 
             <TextView
                 android:id="@+id/product_date_textView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="103dp"
                 android:layout_marginTop="70dp"
+                android:textSize="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/product_detail_description_textView"
-                app:layout_constraintStart_toEndOf="@+id/price_textView"
                 app:layout_constraintTop_toBottomOf="@+id/product_detail_description_textView"
                 tools:text="Exp.28 April 2020" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

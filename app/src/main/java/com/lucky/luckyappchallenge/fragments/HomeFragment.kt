@@ -2,13 +2,12 @@ package com.lucky.luckyappchallenge.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucky.luckyappchallenge.R
@@ -20,7 +19,6 @@ import com.lucky.luckyappchallenge.models.Section
 import com.lucky.luckyappchallenge.utils.hide
 import com.lucky.luckyappchallenge.utils.show
 import com.lucky.luckyappchallenge.viewmodels.HomeViewModel
-import com.lucky.luckyappchallenge.viewmodels.OfferDetailViewModel
 import com.lucky.luckyappchallenge.views.SectionItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -53,10 +51,6 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
         loadData()
     }
 
-    private fun loadData() {
-        homeViewModel.getOffers()
-    }
-
     private fun launchModeObserver() {
         homeViewModel.apply {
             offerAction.observe(viewLifecycleOwner, Observer {
@@ -66,6 +60,17 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
                 }
             })
         }
+    }
+
+    private fun setupGroupie() {
+        binding.sectionsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = sectionAdapter
+        }
+    }
+
+    private fun loadData() {
+        homeViewModel.getOffers()
     }
 
     @SuppressLint("StringFormatMatches")
@@ -87,13 +92,6 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
     private fun getOfferSection(data: List<Section>): List<SectionItem>? {
         return data.map { section ->
             SectionItem(section, this)
-        }
-    }
-
-    private fun setupGroupie() {
-        binding.sectionsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = sectionAdapter
         }
     }
 
