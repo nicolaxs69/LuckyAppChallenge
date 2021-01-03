@@ -77,6 +77,7 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
     private fun updateView(offer: Offer) {
         binding.apply {
             sectionAdapter.clear()
+            offerItemsSize = 0
             offer.sections.forEach { section ->
                 offerItemsSize += section.items.size
             }
