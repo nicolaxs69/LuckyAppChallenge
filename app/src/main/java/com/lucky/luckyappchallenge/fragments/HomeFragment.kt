@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.lucky.luckyappchallenge.R
 import com.lucky.luckyappchallenge.actions.OfferHomeActions
 import com.lucky.luckyappchallenge.databinding.FragmentHomeBinding
@@ -31,6 +32,8 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
     private lateinit var homeViewModel: HomeViewModel
     private var offerItemsSize: Int = 0
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
     private val sectionAdapter: GroupAdapter<GroupieViewHolder> by lazy {
         GroupAdapter<GroupieViewHolder>()
     }
@@ -47,8 +50,15 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
         super.onActivityCreated(savedInstanceState)
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         launchModeObserver()
+        initListeners()
         setupGroupie()
-        loadData()
+        loadData(false)
+    }
+
+    private fun initListeners() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            loadData(true)
+        }
     }
 
     private fun launchModeObserver() {
@@ -69,8 +79,11 @@ internal class HomeFragment : Fragment(), SectionItem.SectionListener {
         }
     }
 
-    private fun loadData() {
+    private fun loadData(isSwipe: Boolean) {
         homeViewModel.getOffers()
+        if (isSwipe) {
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     @SuppressLint("StringFormatMatches")

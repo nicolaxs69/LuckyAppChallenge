@@ -7,7 +7,6 @@
     android:layout_height="wrap_content"
     tools:context=".fragments.HomeFragment">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
@@ -57,14 +56,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="14dp"
         android:gravity="center_horizontal|top"
-        tools:text="124 offers"
         android:textColor="@color/gray_scale"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_container" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_container"
+        tools:text="124 offers" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sections_recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
@@ -74,17 +73,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offers_counter_textView"
-        tools:visibility="invisible" />
+
+        app:layout_constraintTop_toBottomOf="@+id/offers_counter_textView">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sections_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/offers_counter_textView"
+            tools:visibility="invisible" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/section_recycler_shimmer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:foregroundGravity="center"
-        android:layout_marginTop="25dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
