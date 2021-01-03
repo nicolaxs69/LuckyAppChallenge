@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LuckyAppChallenge">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.lucky.luckyappchallenge.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".activities.HomeActivity"
+            android:name="com.lucky.luckyappchallenge.ui.activities.HomeActivity"
             android:label="MainActivity" />
     </application>
 

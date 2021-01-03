@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.lucky.luckyappchallenge.fragments.HomeFragment"
+        android:name="com.lucky.luckyappchallenge.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.lucky.luckyappchallenge.fragments.OfferDetailFragment"
+        android:name="com.lucky.luckyappchallenge.ui.fragments.OfferDetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_offer_detail">
 
