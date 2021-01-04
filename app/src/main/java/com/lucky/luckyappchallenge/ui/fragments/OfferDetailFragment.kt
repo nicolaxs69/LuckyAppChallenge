@@ -84,10 +84,14 @@ class OfferDetailFragment : Fragment() {
                 titleProductdDetailTextView.text = title
                 productDetailDescriptionTextView.text = description
                 priceDiscountTextView.text = price.old
-                priceDiscountTextView.paintFlags = priceDiscountTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                priceDiscountTextView.paintFlags =
+                    priceDiscountTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 priceTextView.text = price.new
                 productDateTextView.text = expiration
-                productRedemptionsTextView.text = redemptionsCap
+                productRedemptionsTextView.text = binding.root.resources.getString(
+                    R.string.luckyApp_offers_detail_redemptions,
+                    redemptionsCap
+                )
                 likesDetailCounterTextView.text = favoriteCount.likesParser()
             }
         }
