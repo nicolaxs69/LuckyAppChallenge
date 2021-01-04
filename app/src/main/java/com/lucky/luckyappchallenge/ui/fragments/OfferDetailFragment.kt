@@ -1,5 +1,6 @@
 package com.lucky.luckyappchallenge.ui.fragments
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.lucky.luckyappchallenge.R
-import com.lucky.luckyappchallenge.utils.actions.OfferDetailActions
-import com.lucky.luckyappchallenge.databinding.FragmentOfferDetailBinding
 import com.lucky.luckyappchallenge.data.models.OfferDetail
-import com.lucky.luckyappchallenge.utils.likesParser
 import com.lucky.luckyappchallenge.data.viewmodels.OfferDetailViewModel
+import com.lucky.luckyappchallenge.databinding.FragmentOfferDetailBinding
+import com.lucky.luckyappchallenge.utils.actions.OfferDetailActions
+import com.lucky.luckyappchallenge.utils.likesParser
 
 class OfferDetailFragment : Fragment() {
 
@@ -83,6 +84,7 @@ class OfferDetailFragment : Fragment() {
                 titleProductdDetailTextView.text = title
                 productDetailDescriptionTextView.text = description
                 priceDiscountTextView.text = price.old
+                priceDiscountTextView.paintFlags = priceDiscountTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 priceTextView.text = price.new
                 productDateTextView.text = expiration
                 productRedemptionsTextView.text = redemptionsCap
