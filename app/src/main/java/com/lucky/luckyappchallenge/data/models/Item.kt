@@ -7,6 +7,6 @@ data class Item(
     @SerializedName("detailUrl") val detail_url: String = "",
     @SerializedName("favoriteCount") val favorite_count: Int = 0,
     @SerializedName("imageUrl") val image_url: String = "",
-    @SerializedName("tags") val tags: String = "",
+    @SerializedName("tags") val tags: String = "This is fallback tag",
     @SerializedName("title") val title: String = ""
 )
